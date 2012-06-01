@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.vertx</groupId>
+	<artifactId>vertx-maven-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>vertx-maven-plugin</name>
+	<url>https://github.com/rhart/vertx-maven-plugin</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.vertx</groupId>
+			<artifactId>platform</artifactId>
+			<version>1.0.0.final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.vertx</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0.0.final</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.4.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mozilla</groupId>
+			<artifactId>rhino</artifactId>
+			<version>1.7R3</version>
+		</dependency>
+	</dependencies>
+</project>
