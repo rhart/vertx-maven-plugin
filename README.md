@@ -46,7 +46,7 @@ The plugin will need to be configured in your project's POM as follows:
 	</plugin>
 
 Sometimes you want automatic execution of the plugin, for example when doing integration testing.
-To do this you can run the plugin in <execution> scenarios and use the <daemon>true</daemon> configuration option to prevent vert.x from running indefinitely.
+To do this you can run the plugin in Maven execution scenarios and use the daemon=true configuration option to prevent vert.x from running indefinitely.
 
 	<plugin>
 		<groupId>org.vertx</groupId>
