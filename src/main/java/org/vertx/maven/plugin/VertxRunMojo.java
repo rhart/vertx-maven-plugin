@@ -16,10 +16,12 @@ package org.vertx.maven.plugin;
  * limitations under the License.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
-import org.vertx.java.deploy.impl.cli.VertxMgr;
 
 /**
  * <p>
@@ -27,6 +29,7 @@ import org.vertx.java.deploy.impl.cli.VertxMgr;
  * </p>
  * 
  * @goal run
+ * @phase package
  * @description Runs vert.x directly from a Maven project.
  */
 public class VertxRunMojo extends AbstractMojo {
@@ -54,11 +57,42 @@ public class VertxRunMojo extends AbstractMojo {
 	 */
 	private String verticleName;
 
+	/**
+	 * Determines whether the verticle is a worker verticle or not. The default
+	 * is false.
+	 * 
+	 * @parameter expression="${run.worker}" default-value=false
+	 */
+	private boolean worker;
+	
+	/**
+	 * <p>
+     * Determines whether or not the server blocks when started. The default
+     * behaviour (daemon = false) will cause the server to pause other processes
+     * while it continues to run the verticle. This is useful when starting the
+     * server with the intent to work with it interactively.
+     * </p><p>
+     * Often, it is desirable to let the server start and continue running subsequent
+     * processes in an automated build environment. This can be facilitated by setting
+     * daemon to true.
+     * </p>
+	 * 
+	 * @parameter expression="${run.daemon}" default-value=false
+	 */
+	private boolean daemon;
+
 	public void execute() throws MojoExecutionException {
 		getLog().info("Launching verticle [" + verticleName + "]");
+		
+		List<String> args = new ArrayList<String>();
+		args.add(verticleName);
+		args.add("-cp");
+		args.add(getDefaultClasspathString());
+		if (worker) {
+			args.add("-worker");
+		}
 
-		VertxMgr.main(new String[] { "run", verticleName, "-cp",
-				getDefaultClasspathString() });
+		new VertxServer().run(args, daemon); 
 	}
 
 	/**
