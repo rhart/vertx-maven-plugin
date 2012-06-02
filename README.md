@@ -45,6 +45,30 @@ The plugin will need to be configured in your project's POM as follows:
 		</configuration>
 	</plugin>
 
+Sometimes you want automatic execution of the plugin, for example when doing integration testing.
+To do this you can run the plugin in Maven execution scenarios and use the daemon=true configuration option to prevent vert.x from running indefinitely.
+
+	<plugin>
+		<groupId>org.vertx</groupId>
+		<artifactId>vertx-maven-plugin</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<configuration>
+			<verticleName>com.acme.MyVerticle</verticleName>
+		</configuration>
+		<executions>
+			<execution>
+				<id>instance1</id>
+				<phase>pre-integration-test</phase>
+				<goals>
+					<goal>run</goal>
+				</goals>
+				<configuration>
+					<daemon>true</daemon>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin> 
+
 Currently the verticle to run needs to be in the same Java project as the POM.  Future releases will allow verticles from other jars to be run.
 Subsequent releases of the plugin will allow for configuration to be provided to the verticle, worker setting, number of instances and non Java verticles.
 
