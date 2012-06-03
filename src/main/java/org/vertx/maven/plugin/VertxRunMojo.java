@@ -107,7 +107,7 @@ public class VertxRunMojo extends AbstractMojo {
 		String defaultClasspath = "";
 
 		if (mavenProject.getPackaging().toUpperCase().equals("JAR")) {
-			defaultClasspath += mavenProject.getBuild().getDirectory() + "\\"
+			defaultClasspath += mavenProject.getBuild().getDirectory().replace("\\", "/") + "/"
 					+ mavenProject.getBuild().getFinalName() + "."
 					+ mavenProject.getPackaging();
 		}
