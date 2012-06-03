@@ -16,6 +16,7 @@ package org.vertx.maven.plugin;
  * limitations under the License.
  */
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,15 @@ import org.apache.maven.project.MavenProject;
  * <p>
  * This goal is used to run a vert.x verticle in it's own instance.
  * </p>
+ * <p>
+ * The plugin forks a parallel lifecycle to ensure that the "package" phase has 
+ * been completed before invoking vert.x. This means that you do not need to 
+ * explicitly execute a "mvn package" first. It also means that a "mvn clean vertx:run" 
+ * will ensure that a full fresh compile and package is done before invoking vert.x.
+ * </p>
  * 
  * @goal run
- * @phase package
+ * @execute phase="package"
  * @description Runs vert.x directly from a Maven project.
  */
 public class VertxRunMojo extends AbstractMojo {
@@ -80,6 +87,40 @@ public class VertxRunMojo extends AbstractMojo {
 	 * @parameter expression="${run.daemon}" default-value=false
 	 */
 	private boolean daemon;
+	
+	/**
+	 * <p>
+	 * The config file for this verticle.
+	 * </p><p>
+	 * If the path is relative (does not start with / or a drive letter like C:), the path 
+	 * is relative to the directory containing the POM.
+	 * </p><p>
+	 * An example value would be src/main/resources/com/acme/MyVerticle.conf
+	 * </p>
+	 * 
+	 * @parameter expression="${run.configFile}"
+	 */
+	private File configFile;
+	
+	/**
+     * The number of instances of the verticle to instantiate in the vert.x server. The
+     * default is 1.
+     *
+     * @parameter expression="${run.instances}" default-value=1
+     */
+    private Integer instances;
+    
+    /**
+     * <p>
+	 * The path on which to search for the main and any other resources used by the verticle. 
+	 * </p><p>
+	 * If your verticle references other scripts, classes or other resources (e.g. jar files) then 
+	 * make sure these are on this path. The path can contain multiple path entries separated by : (colon).
+	 * </p>
+	 * 
+	 * @parameter expression="${run.classpath}"
+	 */
+	private String classpath;
 
 	public void execute() throws MojoExecutionException {
 		getLog().info("Launching verticle [" + verticleName + "]");
@@ -87,10 +128,19 @@ public class VertxRunMojo extends AbstractMojo {
 		List<String> args = new ArrayList<String>();
 		args.add(verticleName);
 		args.add("-cp");
-		args.add(getDefaultClasspathString());
+		args.add(getDefaultClasspathString() + (classpath != null ? (":" + classpath) : ""));
+		
 		if (worker) {
 			args.add("-worker");
 		}
+		
+		if (configFile != null) {
+			args.add("-conf");
+			args.add(configFile.getAbsolutePath());
+		}
+		
+		args.add("-instances");
+		args.add(instances.toString());
 
 		new VertxServer().run(args, daemon); 
 	}
@@ -112,6 +162,7 @@ public class VertxRunMojo extends AbstractMojo {
 					+ mavenProject.getPackaging();
 		}
 
+		getLog().debug("Default classpath [" + defaultClasspath + "]");
 		return defaultClasspath;
 	}
 }
