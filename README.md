@@ -69,8 +69,8 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 		</executions>
 	</plugin> 
 
-Currently the verticle to run needs to be in the same Java project as the POM.  Future releases will allow verticles from other jars to be run.
-Subsequent releases of the plugin will allow for configuration to be provided to the verticle, worker setting, number of instances and non Java verticles.
+
+This plugin currently only works for Java based verticles.
 
 
 
