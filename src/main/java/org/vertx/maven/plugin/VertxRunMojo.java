@@ -41,6 +41,8 @@ import org.apache.maven.project.MavenProject;
  */
 public class VertxRunMojo extends AbstractMojo {
 
+	private static final String VERTX_INSTALL_SYSTEM_PROPERTY = "vertx.install";
+
 	/**
 	 * The Maven project.
 	 * 
@@ -121,10 +123,26 @@ public class VertxRunMojo extends AbstractMojo {
 	 * @parameter expression="${run.classpath}"
 	 */
 	private String classpath;
+	
+	/**
+     * <p>
+	 * The home directory of your vert.x installation i.e. where you unzipped the vert.x distro.  
+	 * For example C:/vert.x/vert.x-1.0.1.final
+	 * </p><p>
+	 * You will need to set this configuration option if you want to run any out-of-the box modules like web-server.
+	 * </p>
+	 * 
+	 * @parameter expression="${run.vertxHomeDirectory}"
+	 */
+	private String vertxHomeDirectory;
 
 	public void execute() throws MojoExecutionException {
 		getLog().info("Launching verticle [" + verticleName + "]");
 		
+		if (vertxHomeDirectory != null) {
+			System.setProperty(VERTX_INSTALL_SYSTEM_PROPERTY, vertxHomeDirectory);
+		}
+				
 		List<String> args = new ArrayList<String>();
 		args.add(verticleName);
 		args.add("-cp");
