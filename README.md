@@ -101,6 +101,9 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 		</executions>
 	</plugin> 
 
+If you need to use any of the out-of-the-box mods then you need a local vert.x install and set the vertxHomeDirectory Maven configuration option.  
+If you need to use any 3rd party mods you will have to wait for the next release :)
+
 
 This plugin currently works for all verticle languages except Ruby.
 
