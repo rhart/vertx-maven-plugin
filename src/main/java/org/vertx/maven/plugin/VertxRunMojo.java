@@ -136,7 +136,7 @@ public class VertxRunMojo extends AbstractMojo {
 	 */
 	private String vertxHomeDirectory;
 
-	public void execute() throws MojoExecutionException {
+	public void execute() throws MojoExecutionException {	
 		getLog().info("Launching verticle [" + verticleName + "]");
 		
 		if (vertxHomeDirectory != null) {

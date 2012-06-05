@@ -6,11 +6,11 @@
 	<artifactId>vertx-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 
-	<version>1.0.1-RELEASE</version>
+	<version>1.0.2-RELEASE</version>
 
 	<name>vertx-maven-plugin</name>
 	<url>https://github.com/rhart/vertx-maven-plugin</url>
-	
+
 	<properties>
 		<maven.version>2.2.1</maven.version>
 	</properties>
@@ -47,11 +47,16 @@
 			<artifactId>rhino</artifactId>
 			<version>1.7R3</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.4</version>
-        </dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>1.8.6</version>
+		</dependency>
 	</dependencies>
 </project>
