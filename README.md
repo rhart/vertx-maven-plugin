@@ -43,7 +43,7 @@ The plugin will need to be configured in your project's POM as follows:
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -55,7 +55,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
