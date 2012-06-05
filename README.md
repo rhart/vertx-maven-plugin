@@ -15,8 +15,9 @@ Manually install the plugin jar to your Maven repository
 Until the vert.x jars are available in the Maven central repository you will also have to manually install these into your local Maven repository too.
 You can find them in lib/jars folder of the vert.x distro.  
 
-      	mvn install:install-file -Dfile=vert.x-platform.jar -DgroupId=org.vertx -DartifactId=platform -Dversion=1.0.0.final -Dpackaging=jar  
-      	mvn install:install-file -Dfile=vert.x-core.jar -DgroupId=org.vertx -DartifactId=core -Dversion=1.0.0.final -Dpackaging=jar  
+	mvn install:install-file -Dfile=vert.x-platform.jar -DgroupId=org.vertx -DartifactId=platform -Dversion=1.0.0.final -Dpackaging=jar  
+	
+	mvn install:install-file -Dfile=vert.x-core.jar -DgroupId=org.vertx -DartifactId=core -Dversion=1.0.0.final -Dpackaging=jar  
       	
 
 	<dependency>
