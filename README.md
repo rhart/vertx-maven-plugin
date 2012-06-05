@@ -5,12 +5,12 @@ Maven Plugin for running verticles in their own vert.x instance or managing a ve
 
 Install
 -----
-
-Download the latest plugin jar and POM from the downloads page (https://github.com/rhart/vertx-maven-plugin/downloads) or build the jar from source.
+Until the plugin artifact has been added to Maven Central, which will happen when vert.x dependencies are there too,
+you will need to download the latest plugin jar and POM from the downloads page (https://github.com/rhart/vertx-maven-plugin/downloads) or build the jar from source.
 
 Manually install the plugin jar to your Maven repository
 
-	mvn install -Dfile=vertx-maven-plugin-0.0.1-SNAPSHOT.jar -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=0.0.1-SNAPSHOT -Dpackaging=maven-plugin
+	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=0.0.1-SNAPSHOT -Dpackaging=maven-plugin
 
 Unfortunately, until the vert.x jars are available in the Maven central repository you will also have to manually install these into your local Maven repository too.
 
