@@ -34,6 +34,10 @@ This goal will run a verticle in it's own vert.x instance.  vert.x will continue
 
 	mvn vertx:run
 	
+The plugin forks a parallel lifecycle to ensure that the "package" phase has been completed before invoking 
+vert.x. This means that you do not need to explicitly execute a "mvn package" first. It also means that a 
+"mvn clean vertx:run" will ensure that a full fresh compile and package is done before invoking vert.x.  
+	
 The plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
