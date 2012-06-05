@@ -10,7 +10,7 @@ you will need to download the latest plugin jar and POM from the downloads page 
 
 Manually install the plugin jar to your Maven repository
 
-	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.0.1-RELEASE -Dpackaging=maven-plugin
+	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.2-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.2-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.0.2-RELEASE -Dpackaging=maven-plugin
 
 Until the vert.x jars are available in the Maven central repository you will also have to manually install these into your local Maven repository too.
 You can find them in lib/jars folder of the vert.x distro.  
@@ -44,16 +44,38 @@ The plugin forks a parallel lifecycle to ensure that the "package" phase has bee
 vert.x. This means that you do not need to explicitly execute a "mvn package" first. It also means that a 
 "mvn clean vertx:run" will ensure that a full fresh compile and package is done before invoking vert.x.  
 	
-The plugin will need to be configured in your project's POM as follows:
+For Java verticles, the plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.1-RELEASE</version>
+		<version>1.0.2-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
-	</plugin>
+	</plugin>  
+	
+For Groovy verticles, the plugin will need to be configured in your project's POM as follows:
+
+	<plugin>
+		<groupId>org.vertx</groupId>
+		<artifactId>vertx-maven-plugin</artifactId>
+		<version>1.0.2-RELEASE</version>
+		<configuration>
+			<verticleName>com/acme/MyVerticle.groovy</verticleName>
+		</configuration>
+	</plugin>  
+	
+For Javascript verticles, the plugin will need to be configured in your project's POM as follows:
+
+	<plugin>
+		<groupId>org.vertx</groupId>
+		<artifactId>vertx-maven-plugin</artifactId>
+		<version>1.0.2-RELEASE</version>
+		<configuration>
+			<verticleName>src/main/javascript/com/acme/MyVerticle.js</verticleName>
+		</configuration>
+	</plugin>  
 
 Sometimes you want automatic execution of the plugin, for example when doing integration testing.
 To do this you can run the plugin in Maven execution scenarios and use the daemon=true configuration option to prevent vert.x from running indefinitely.
@@ -61,7 +83,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.1-RELEASE</version>
+		<version>1.0.2-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -80,7 +102,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	</plugin> 
 
 
-This plugin currently only works for Java based verticles.
+This plugin currently works for all verticle languages except Ruby.
 
 
 
