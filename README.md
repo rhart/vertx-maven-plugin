@@ -10,7 +10,7 @@ you will need to download the latest plugin jar and POM from the downloads page 
 
 Manually install the plugin jar to your Maven repository
 
-	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=0.0.1-SNAPSHOT -Dpackaging=maven-plugin
+	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.0.1-RELEASE -Dpackaging=maven-plugin
 
 Unfortunately, until the vert.x jars are available in the Maven central repository you will also have to manually install these into your local Maven repository too.
 
