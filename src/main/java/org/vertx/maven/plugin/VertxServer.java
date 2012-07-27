@@ -18,7 +18,7 @@ package org.vertx.maven.plugin;
 
 import java.util.List;
 
-import org.vertx.java.deploy.impl.cli.VertxMgr;
+import org.vertx.java.deploy.impl.cli.Starter;
 
 public class VertxServer {
 	
@@ -53,7 +53,7 @@ public class VertxServer {
 
 		@Override
 		public void run() {
-			VertxMgr.main(this.args);
+			Starter.main(this.args);
 		}
 	}
 }
