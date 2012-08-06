@@ -13,6 +13,7 @@
 
     <properties>
         <maven.version>2.2.1</maven.version>
+        <vertx.version>1.2.1.final</vertx.version>
     </properties>
 
     <build>
@@ -29,7 +30,6 @@
         </plugins>
     </build>
 
-
     <dependencies>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -41,15 +41,16 @@
             <artifactId>maven-project</artifactId>
             <version>${maven.version}</version>
         </dependency>
+        
         <dependency>
            <groupId>org.vert-x</groupId>
            <artifactId>vertx-platform</artifactId>
-           <version>1.2.1.final</version>
+           <version>${vertx.version}</version>
        </dependency>
         <dependency>
            <groupId>org.vert-x</groupId>
            <artifactId>vertx-core</artifactId>
-           <version>1.2.1.final</version>
+           <version>${vertx.version}</version>
        </dependency>
     </dependencies>
 </project>
