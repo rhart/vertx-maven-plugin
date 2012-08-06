@@ -38,7 +38,9 @@ public class VertxServer {
                 Starter.main(args);
             }
         }, "Vertx Manager Thread");
+        
         managerThread.start();
+        
         if (!daemon) {
             try {
                 managerThread.join();
