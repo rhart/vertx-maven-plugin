@@ -42,6 +42,8 @@ import org.apache.maven.project.MavenProject;
 public class VertxRunMojo extends AbstractMojo {
 
 	private static final String VERTX_INSTALL_SYSTEM_PROPERTY = "vertx.install";
+        
+        private static final String VERTX_MODS_SYSTEM_PROPERTY = "vertx.mods";
 
 	/**
 	 * The Maven project.
@@ -66,6 +68,22 @@ public class VertxRunMojo extends AbstractMojo {
 	 */
 	private String verticleName;
 
+	/**
+	 * The name of the module to run.
+	 * 
+	 * If you're running a module, it's the name of the module to be run.
+	 * 
+	 * @parameter expression="${run.moduleName}"
+	 */
+	private String moduleName;
+        
+        /**
+	 * The URL of the module repository.
+	 * 
+	 * @parameter expression="${run.moduleRepoUrl}"
+	 */
+	private String moduleRepoUrl;
+        
 	/**
 	 * Determines whether the verticle is a worker verticle or not. The default
 	 * is false.
@@ -137,16 +155,28 @@ public class VertxRunMojo extends AbstractMojo {
 	private String vertxHomeDirectory;
 
 	public void execute() throws MojoExecutionException {	
-		getLog().info("Launching verticle [" + verticleName + "]");
 		
 		if (vertxHomeDirectory != null) {
 			System.setProperty(VERTX_INSTALL_SYSTEM_PROPERTY, vertxHomeDirectory);
+                        System.setProperty(VERTX_MODS_SYSTEM_PROPERTY, vertxHomeDirectory + "/mods");
+                        getLog().info("Vert.X home: " + vertxHomeDirectory);
 		}
 				
-		List<String> args = new ArrayList<String>();
-		args.add(verticleName);
-		args.add("-cp");
-		args.add(getDefaultClasspathString() + (classpath != null ? (":" + classpath) : ""));
+		List<String> args = new ArrayList<>();
+                boolean isModule = false;
+                
+                if (moduleName != null) {
+                        getLog().info("Launching module [" + moduleName + "]");
+                        args.add(moduleName);
+                        isModule = true;
+                } else if (verticleName != null) {
+                        getLog().info("Launching verticle [" + verticleName + "]");
+                        args.add(verticleName);
+                        args.add("-cp");
+                        args.add(getDefaultClasspathString() + (classpath != null ? (":" + classpath) : ""));
+                } else {
+                        throw new MojoExecutionException("You have to specify either verticleName or moduleName parameter.");
+                }
 		
 		if (worker) {
 			args.add("-worker");
@@ -160,7 +190,11 @@ public class VertxRunMojo extends AbstractMojo {
 		args.add("-instances");
 		args.add(instances.toString());
 
-		new VertxServer().run(args, daemon); 
+                if (isModule) {
+                    new VertxServer().runModule(args, daemon); 
+                } else {
+                    new VertxServer().runVerticle(args, daemon); 
+                }
 	}
 
 	/**
