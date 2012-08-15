@@ -6,14 +6,15 @@
     <artifactId>vertx-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-    <version>1.0.4-RELEASE</version>
+    <version>1.2.3-SNAPSHOT</version>
 
     <name>vertx-maven-plugin</name>
     <url>https://github.com/rhart/vertx-maven-plugin</url>
 
     <properties>
         <maven.version>2.2.1</maven.version>
-        <vertx.version>1.2.1.final</vertx.version>
+        <vertx.version>1.2.3.final</vertx.version>
+        <nexus.url>http://dev.jurahungaria.com:8081</nexus.url>
     </properties>
 
     <build>
@@ -53,4 +54,27 @@
            <version>${vertx.version}</version>
        </dependency>
     </dependencies>
+    
+    <scm>
+        <connection>scm:git:file://${basedir}</connection>
+        <developerConnection>scm:git:ssh://git@github.com:gyszalai/vertx-maven-plugin.git</developerConnection>
+    </scm>
+    
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>releases</id>
+            <name>JURA releases repo</name>
+            <url>${nexus.url}/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>snapshots</id>
+            <name>JURA snapshots repo</name>
+            <url>${nexus.url}/nexus/content/repositories/snapshots/</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
+    
 </project>
