@@ -23,14 +23,14 @@ import java.util.List;
 public class VertxServer {
 
     private static final String VERTX_RUN_COMMAND = "run";
+    
+    private static final String VERTX_RUNMOD_COMMAND = "runmod";
 
-    public void run(List<String> serverArgs) {
+    private void run(List<String> serverArgs) {
         this.run(serverArgs, false);
     }
 
-    public void run(final List<String> serverArgs, boolean daemon) {
-        serverArgs.add(0, VERTX_RUN_COMMAND);
-
+    private void run(final List<String> serverArgs, boolean daemon) {
         final Thread managerThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,4 +50,15 @@ public class VertxServer {
             }
         }
     }
+    
+    public void runVerticle(final List<String> serverArgs, boolean daemon) {
+        serverArgs.add(0, VERTX_RUN_COMMAND);
+        this.run(serverArgs, daemon);
+    }
+    
+    public void runModule(final List<String> serverArgs, boolean daemon) {
+        serverArgs.add(0, VERTX_RUNMOD_COMMAND);
+        this.run(serverArgs, daemon);
+    }
+    
 }
