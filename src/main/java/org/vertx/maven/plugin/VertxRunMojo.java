@@ -64,7 +64,6 @@ public class VertxRunMojo extends AbstractMojo {
 	 * name of the Main class e.g. com.acme.MyVerticle.
 	 * 
 	 * @parameter expression="${run.verticleClass}"
-	 * @required
 	 */
 	private String verticleName;
 
