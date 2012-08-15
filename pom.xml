@@ -5,7 +5,7 @@
     <artifactId>vertx-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-    <version>1.2.4-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
 
     <name>vertx-maven-plugin</name>
     <url>https://github.com/rhart/vertx-maven-plugin</url>
@@ -67,7 +67,7 @@
     
     <scm>
         <connection>scm:git:file://${basedir}</connection>
-        <developerConnection>scm:git:ssh://git@github.com:gyszalai/vertx-maven-plugin.git</developerConnection>
+        <developerConnection>scm:git:file://${basedir}</developerConnection>
     </scm>
     
     <distributionManagement>
