@@ -1,19 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.vertx</groupId>
     <artifactId>vertx-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
-    <version>1.0.4-RELEASE</version>
+    <version>1.2.4-SNAPSHOT</version>
 
     <name>vertx-maven-plugin</name>
     <url>https://github.com/rhart/vertx-maven-plugin</url>
 
     <properties>
         <maven.version>2.2.1</maven.version>
-        <vertx.version>1.2.1.final</vertx.version>
+        <vertx.version>1.2.3.final</vertx.version>
+        <nexus.url>http://dev.jurahungaria.com:8081</nexus.url>
     </properties>
 
     <build>
@@ -27,6 +27,17 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.2</version>
+                <configuration>
+                    <preparationGoals>clean verify install</preparationGoals>
+                    <pushChanges>false</pushChanges>
+                </configuration>
+            </plugin>
+            
         </plugins>
     </build>
 
@@ -46,11 +57,51 @@
            <groupId>org.vert-x</groupId>
            <artifactId>vertx-platform</artifactId>
            <version>${vertx.version}</version>
-       </dependency>
+        </dependency>
+        <dependency>
+           <groupId>org.vert-x</groupId>
+           <artifactId>vertx-lang-java</artifactId>
+           <version>${vertx.version}</version>
+        </dependency>
         <dependency>
            <groupId>org.vert-x</groupId>
            <artifactId>vertx-core</artifactId>
            <version>${vertx.version}</version>
        </dependency>
+       
+       <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>0.9.29</version>
+        </dependency>
+       
     </dependencies>
+    
+    <scm>
+        <connection>scm:git:file://${basedir}</connection>
+        <developerConnection>scm:git:file://${basedir}</developerConnection>
+    </scm>
+    
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>releases</id>
+            <name>JURA releases repo</name>
+            <url>${nexus.url}/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>snapshots</id>
+            <name>JURA snapshots repo</name>
+            <url>${nexus.url}/nexus/content/repositories/snapshots/</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
+    
 </project>

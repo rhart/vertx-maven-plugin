@@ -36,7 +36,7 @@ Usage
 
 ### vertx:run
 
-This goal will run a verticle in it's own vert.x instance.  vert.x will continue to run until the plugin is explicitly stopped.  Simply type:
+This goal will run a verticle or vert.x module in it's own vert.x instance.  vert.x will continue to run until the plugin is explicitly stopped.  Simply type:
 
 	mvn vertx:run
 	
@@ -77,6 +77,20 @@ For Javascript verticles, the plugin will need to be configured in your project'
 		</configuration>
 	</plugin>  
 
+For modules, the plugin will need to be configured in your project's POM as follows:
+
+	<plugin>
+		<groupId>org.vertx</groupId>
+		<artifactId>vertx-maven-plugin</artifactId>
+		<version>1.0.2-RELEASE</version>
+		<configuration>
+			<moduleName>some-module-name</moduleName>
+			<moduleRepoUrl>http://some.module.repo.url</moduleRepoUrl>
+		</configuration>
+	</plugin>  
+
+	Note that the moduleRepoUrl parameter is optional, the default value is: http://github.com/vert-x/vertx-mods
+	
 Sometimes you want automatic execution of the plugin, for example when doing integration testing.
 To do this you can run the plugin in Maven execution scenarios and use the daemon=true configuration option to prevent vert.x from running indefinitely.
 
