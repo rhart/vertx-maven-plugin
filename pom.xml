@@ -13,7 +13,6 @@
     <properties>
         <maven.version>2.2.1</maven.version>
         <vertx.version>1.2.3.final</vertx.version>
-        <nexus.url>http://dev.jurahungaria.com:8081</nexus.url>
     </properties>
 
     <build>
@@ -74,34 +73,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>0.9.29</version>
-        </dependency>
        
     </dependencies>
-    
-    <scm>
-        <connection>scm:git:file://${basedir}</connection>
-        <developerConnection>scm:git:file://${basedir}</developerConnection>
-    </scm>
-    
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>releases</id>
-            <name>JURA releases repo</name>
-            <url>${nexus.url}/nexus/content/repositories/releases/</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <uniqueVersion>true</uniqueVersion>
-            <id>snapshots</id>
-            <name>JURA snapshots repo</name>
-            <url>${nexus.url}/nexus/content/repositories/snapshots/</url>
-            <layout>default</layout>
-        </snapshotRepository>
-    </distributionManagement>
     
 </project>
