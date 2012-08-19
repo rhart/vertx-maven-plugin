@@ -1,79 +1,112 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.vertx</groupId>
-    <artifactId>vertx-maven-plugin</artifactId>
-    <packaging>maven-plugin</packaging>
+	<groupId>org.vertx</groupId>
+	<artifactId>vertx-maven-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
 
-    <version>1.2.4-SNAPSHOT</version>
+	<version>1.2.3.1-SNAPSHOT</version>
 
-    <name>vertx-maven-plugin</name>
-    <url>https://github.com/rhart/vertx-maven-plugin</url>
+	<name>vertx-maven-plugin</name>
+	<url>https://github.com/rhart/vertx-maven-plugin</url>
 
-    <properties>
-        <maven.version>2.2.1</maven.version>
-        <vertx.version>1.2.3.final</vertx.version>
-    </properties>
+	<properties>
+		<maven.version>2.2.1</maven.version>
+		<vertx.version>1.2.3.final</vertx.version>
+		<rhino.version>1.7R3</rhino.version>
+		<groovy.version>1.8.6</groovy.version>
+	</properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.2.2</version>
-                <configuration>
-                    <preparationGoals>clean verify install</preparationGoals>
-                    <pushChanges>false</pushChanges>
-                </configuration>
-            </plugin>
-            
-        </plugins>
-    </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-plugin-api</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-project</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        
-        <dependency>
-           <groupId>org.vert-x</groupId>
-           <artifactId>vertx-platform</artifactId>
-           <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-           <groupId>org.vert-x</groupId>
-           <artifactId>vertx-lang-java</artifactId>
-           <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-           <groupId>org.vert-x</groupId>
-           <artifactId>vertx-core</artifactId>
-           <version>${vertx.version}</version>
-       </dependency>
-       
-       <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-       
-    </dependencies>
-    
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<preparationGoals>clean verify install</preparationGoals>
+					<pushChanges>false</pushChanges>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+
+		<!-- vertx dependencies -->
+		<dependency>
+			<groupId>org.vert-x</groupId>
+			<artifactId>vertx-platform</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.vert-x</groupId>
+			<artifactId>vertx-core</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+
+		<!-- vertx Java dependencies -->
+		<dependency>
+			<groupId>org.vert-x</groupId>
+			<artifactId>vertx-lang-java</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+
+		<!-- vertx Groovy dependencies -->
+		<dependency>
+			<groupId>org.vert-x</groupId>
+			<artifactId>vertx-lang-groovy</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>${groovy.version}</version>
+		</dependency>
+
+
+		<!-- vertx JavaScript dependencies -->
+		<dependency>
+			<groupId>org.vert-x</groupId>
+			<artifactId>vertx-lang-rhino</artifactId>
+			<version>${vertx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mozilla</groupId>
+			<artifactId>rhino</artifactId>
+			<version>${rhino.version}</version>
+		</dependency>
+
+
+		<!-- 3rd Party dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+	</dependencies>
+
 </project>

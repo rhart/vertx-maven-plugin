@@ -26,10 +26,6 @@ public class VertxServer {
     
     private static final String VERTX_RUNMOD_COMMAND = "runmod";
 
-    private void run(List<String> serverArgs) {
-        this.run(serverArgs, false);
-    }
-
     private void run(final List<String> serverArgs, boolean daemon) {
         final Thread managerThread = new Thread(new Runnable() {
             @Override
