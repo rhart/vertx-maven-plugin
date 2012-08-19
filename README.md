@@ -10,7 +10,7 @@ you will need to download the latest plugin jar and POM from the downloads page 
 
 Manually install the plugin jar to your Maven repository
 
-	mvn install:install-file -Dfile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.jar -DpomFile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.2.3.1-SNAPSHOT -Dpackaging=maven-plugin
+	mvn install:install-file -Dfile=vertx-maven-plugin-1.2.3.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.2.3.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.2.3.1-RELEASE -Dpackaging=maven-plugin
 
 Versions
 --------
