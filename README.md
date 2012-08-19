@@ -16,7 +16,7 @@ Versions
 --------
 
 This plugin's versions are aligned with vert.x versions with the minor version number to indicate increments of the plugin.
-e.g. vert.x 1.2.3.FINAL would be 1.2.x-RELEASE
+e.g. vert.x 1.2.3.FINAL would be 1.2.3.x-RELEASE
 
 Usage
 -----
@@ -36,7 +36,7 @@ For Java verticles, the plugin will need to be configured in your project's POM 
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.1-RELEASE</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -47,7 +47,7 @@ For Groovy verticles, the plugin will need to be configured in your project's PO
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.1-RELEASE</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com/acme/MyVerticle.groovy</verticleName>
 		</configuration>
@@ -58,7 +58,7 @@ For Javascript verticles, the plugin will need to be configured in your project'
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.1-RELEASE</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>src/main/javascript/com/acme/MyVerticle.js</verticleName>
 		</configuration>
@@ -69,7 +69,7 @@ For modules, the plugin will need to be configured in your project's POM as foll
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.1-RELEASE</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<moduleName>some-module-name</moduleName>
 			<moduleRepoUrl>http://some.module.repo.url</moduleRepoUrl>
@@ -84,7 +84,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.1-RELEASE</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
