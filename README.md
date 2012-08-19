@@ -1,7 +1,7 @@
 vertx-maven-plugin
 ==================
 
-Maven Plugin for running verticles in their own vert.x instance or managing a vert.x standalone server.
+Maven Plugin for running verticles in their own vert.x instance.
 
 Install
 -----
@@ -10,26 +10,8 @@ you will need to download the latest plugin jar and POM from the downloads page 
 
 Manually install the plugin jar to your Maven repository
 
-	mvn install:install-file -Dfile=vertx-maven-plugin-1.0.2-RELEASE.jar -DpomFile=vertx-maven-plugin-1.0.2-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.0.2-RELEASE -Dpackaging=maven-plugin
+	mvn install:install-file -Dfile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.jar -DpomFile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.2.3.1-SNAPSHOT -Dpackaging=maven-plugin
 
-Until the vert.x jars are available in the Maven central repository you will also have to manually install these into your local Maven repository too.
-You can find them in lib/jars folder of the vert.x distro.  
-
-	mvn install:install-file -Dfile=vert.x-platform.jar -DgroupId=org.vertx -DartifactId=platform -Dversion=1.0.0.final -Dpackaging=jar  
-	
-	mvn install:install-file -Dfile=vert.x-core.jar -DgroupId=org.vertx -DartifactId=core -Dversion=1.0.0.final -Dpackaging=jar  
-      	
-
-	<dependency>
-		<groupId>org.vertx</groupId>
-		<artifactId>platform</artifactId>
-		<version>1.0.0.final</version>
-	</dependency>
-	<dependency>
-		<groupId>org.vertx</groupId>
-		<artifactId>core</artifactId>
-		<version>1.0.0.final</version>
-	</dependency>
 
 Usage
 -----
@@ -49,7 +31,7 @@ For Java verticles, the plugin will need to be configured in your project's POM 
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.2-RELEASE</version>
+		<version>1.2.3.1-SNAPSHOT</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -60,7 +42,7 @@ For Groovy verticles, the plugin will need to be configured in your project's PO
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.2-RELEASE</version>
+		<version>1.2.3.1-SNAPSHOT</version>
 		<configuration>
 			<verticleName>com/acme/MyVerticle.groovy</verticleName>
 		</configuration>
@@ -71,7 +53,7 @@ For Javascript verticles, the plugin will need to be configured in your project'
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.2-RELEASE</version>
+		<version>1.2.3.1-SNAPSHOT</version>
 		<configuration>
 			<verticleName>src/main/javascript/com/acme/MyVerticle.js</verticleName>
 		</configuration>
@@ -82,7 +64,7 @@ For modules, the plugin will need to be configured in your project's POM as foll
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.2-RELEASE</version>
+		<version>1.2.3.1-SNAPSHOT</version>
 		<configuration>
 			<moduleName>some-module-name</moduleName>
 			<moduleRepoUrl>http://some.module.repo.url</moduleRepoUrl>
@@ -97,7 +79,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.0.2-RELEASE</version>
+		<version>1.2.3.1-SNAPSHOT</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -118,7 +100,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 If you need to use any of the out-of-the-box mods then you need a local vert.x install and set the vertxHomeDirectory Maven configuration option. If you need to use any 3rd party mods you will have to wait for the next release :)
 
 
-This plugin currently works for all verticle languages except Ruby.
+This plugin currently works for all verticle languages except Ruby and Python.
 
 
 
