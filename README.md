@@ -12,6 +12,11 @@ Manually install the plugin jar to your Maven repository
 
 	mvn install:install-file -Dfile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.jar -DpomFile=vertx-maven-plugin-1.2.3.1-SNAPSHOT.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.2.3.1-SNAPSHOT -Dpackaging=maven-plugin
 
+Versions
+--------
+
+This plugin's versions are aligned with vert.x versions with an additional number to indicate increments of the plugin.
+e.g. vert.x 1.2.3.FINAL would be 1.2.3.x.RELEASE
 
 Usage
 -----
@@ -31,7 +36,7 @@ For Java verticles, the plugin will need to be configured in your project's POM 
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-SNAPSHOT</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -42,7 +47,7 @@ For Groovy verticles, the plugin will need to be configured in your project's PO
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-SNAPSHOT</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com/acme/MyVerticle.groovy</verticleName>
 		</configuration>
@@ -53,7 +58,7 @@ For Javascript verticles, the plugin will need to be configured in your project'
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-SNAPSHOT</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>src/main/javascript/com/acme/MyVerticle.js</verticleName>
 		</configuration>
@@ -64,7 +69,7 @@ For modules, the plugin will need to be configured in your project's POM as foll
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-SNAPSHOT</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<moduleName>some-module-name</moduleName>
 			<moduleRepoUrl>http://some.module.repo.url</moduleRepoUrl>
@@ -79,7 +84,7 @@ To do this you can run the plugin in Maven execution scenarios and use the daemo
 	<plugin>
 		<groupId>org.vertx</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-SNAPSHOT</version>
+		<version>1.2.3.1-RELEASE</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
