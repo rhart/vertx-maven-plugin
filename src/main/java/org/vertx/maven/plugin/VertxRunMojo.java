@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -187,8 +188,7 @@ public class VertxRunMojo extends AbstractMojo {
 			getLog().info("Launching verticle [" + verticleName + "]");
 			args.add(verticleName);
 			args.add("-cp");
-			args.add(getDefaultClasspathString()
-					+ (classpath != null ? (CP_SEPARATOR + classpath) : ""));
+			args.add(getFullClasspath());
 		} else {
 			throw new MojoExecutionException(
 					"You have to specify either verticleName or moduleName parameter.");
@@ -211,6 +211,31 @@ public class VertxRunMojo extends AbstractMojo {
 		} else {
 			new VertxServer().runVerticle(args, daemon);
 		}
+	}
+	
+	/**
+	 * @return classpath including Maven dependencies
+	 * @throws MojoExecutionException
+	 */
+	private String getFullClasspath() throws MojoExecutionException {
+	  StringBuilder classpathBuilder = new StringBuilder(getDefaultClasspathString());
+	  if (classpath != null) {
+	    classpathBuilder.append(CP_SEPARATOR).append(classpath);
+	  }
+	  try {
+	    List<String> runtimeClasspathElements = mavenProject.getRuntimeClasspathElements();
+	    for (String element : runtimeClasspathElements) {
+	      classpathBuilder.append(CP_SEPARATOR).append(element);
+	    }
+	  } catch (DependencyResolutionRequiredException e) {
+	    throw new MojoExecutionException("Could not list runtime classpath elements");
+	  }
+	  
+	  String fullClasspath = classpathBuilder.toString();
+	  
+	  getLog().debug("Full classpath [" + fullClasspath + "]");
+	  
+	  return fullClasspath;
 	}
 
 	/**
