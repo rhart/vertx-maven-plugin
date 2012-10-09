@@ -89,6 +89,19 @@ public class VertxRunMojo extends AbstractMojo {
 	 */
 	private String moduleRepoUrl;
 
+    /**
+     * The host on which to run the cluster. If this is not specified, then the cluster mode
+     * will not be activated.
+ 	 * @parameter expression="${run.clusterHost}"
+     */
+    private String clusterHost;
+
+    /**
+     * The cluster port to use, if not specified the vertx default is used.
+     * @parameter expression="${run.clusterPost}"
+     */
+    private int clusterPort = -1;
+
 	/**
 	 * Determines whether the verticle is a worker verticle or not. The default
 	 * is false.
@@ -202,6 +215,16 @@ public class VertxRunMojo extends AbstractMojo {
 			args.add("-conf");
 			args.add(configFile.getAbsolutePath());
 		}
+
+        if(clusterHost != null) {
+            args.add("-cluster");
+            args.add("-cluster-host");
+         	args.add(clusterHost);
+            if(clusterPort > 0) {
+                args.add("-cluster-port");
+             	args.add(Integer.toString(clusterPort));
+            }
+        }
 
 		args.add("-instances");
 		args.add(instances.toString());
