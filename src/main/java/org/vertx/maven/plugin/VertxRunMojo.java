@@ -83,11 +83,19 @@ public class VertxRunMojo extends AbstractMojo {
 	private String moduleName;
 
 	/**
-	 * The URL of the module repository.
+	 * The host on which to run the cluster. If this is not specified, then the
+	 * cluster mode will not be activated.
 	 * 
-	 * @parameter expression="${run.moduleRepoUrl}"
+	 * @parameter expression="${run.clusterHost}"
 	 */
-	private String moduleRepoUrl;
+	private String clusterHost;
+
+	/**
+	 * The cluster port to use, if not specified the vertx default is used.
+	 * 
+	 * @parameter expression="${run.clusterPost}"
+	 */
+	private int clusterPort = -1;
 
 	/**
 	 * Determines whether the verticle is a worker verticle or not. The default
@@ -203,6 +211,16 @@ public class VertxRunMojo extends AbstractMojo {
 			args.add(configFile.getAbsolutePath());
 		}
 
+		if (clusterHost != null) {
+			args.add("-cluster");
+			args.add("-cluster-host");
+			args.add(clusterHost);
+			if (clusterPort > 0) {
+				args.add("-cluster-port");
+				args.add(Integer.toString(clusterPort));
+			}
+		}
+
 		args.add("-instances");
 		args.add(instances.toString());
 
@@ -212,30 +230,34 @@ public class VertxRunMojo extends AbstractMojo {
 			new VertxServer().runVerticle(args, daemon);
 		}
 	}
-	
+
 	/**
 	 * @return classpath including Maven dependencies
 	 * @throws MojoExecutionException
 	 */
 	private String getFullClasspath() throws MojoExecutionException {
-	  StringBuilder classpathBuilder = new StringBuilder(getDefaultClasspathString());
-	  if (classpath != null) {
-	    classpathBuilder.append(CP_SEPARATOR).append(classpath);
-	  }
-	  try {
-	    List<String> runtimeClasspathElements = mavenProject.getRuntimeClasspathElements();
-	    for (String element : runtimeClasspathElements) {
-	      classpathBuilder.append(CP_SEPARATOR).append(element);
-	    }
-	  } catch (DependencyResolutionRequiredException e) {
-	    throw new MojoExecutionException("Could not list runtime classpath elements");
-	  }
-	  
-	  String fullClasspath = classpathBuilder.toString();
-	  
-	  getLog().debug("Full classpath [" + fullClasspath + "]");
-	  
-	  return fullClasspath;
+		StringBuilder classpathBuilder = new StringBuilder(
+				getDefaultClasspathString());
+		if (classpath != null) {
+			classpathBuilder.append(CP_SEPARATOR).append(classpath);
+		}
+		try {
+			@SuppressWarnings("unchecked")
+			List<String> runtimeClasspathElements = mavenProject
+					.getRuntimeClasspathElements();
+			for (String element : runtimeClasspathElements) {
+				classpathBuilder.append(CP_SEPARATOR).append(element);
+			}
+		} catch (DependencyResolutionRequiredException e) {
+			throw new MojoExecutionException(
+					"Could not list runtime classpath elements");
+		}
+
+		String fullClasspath = classpathBuilder.toString();
+
+		getLog().debug("Full classpath [" + fullClasspath + "]");
+
+		return fullClasspath;
 	}
 
 	/**
