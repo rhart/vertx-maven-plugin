@@ -22,9 +22,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>https://github.com/rhart/vertx-maven-plugin.git</connection>
+		<connection>scm:git:https://github.com/rhart/vertx-maven-plugin.git</connection>
 		<url>https://github.com/rhart/vertx-maven-plugin</url>
-		<developerConnection>https://github.com/rhart/vertx-maven-plugin.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/rhart/vertx-maven-plugin.git</developerConnection>
 	</scm>
 
 	<developers>
