@@ -6,8 +6,11 @@ Maven Plugin for running verticles in their own vert.x instance.
 Install
 -----
 This plugin is now available on Maven Central.
+
 Group ID: org.anacoders.plugins
+
 Artifact ID: vertx-maven-plugin
+
 Current release version: 1.2.3.4
 
 
