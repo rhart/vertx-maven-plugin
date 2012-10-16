@@ -5,18 +5,17 @@ Maven Plugin for running verticles in their own vert.x instance.
 
 Install
 -----
-Until the plugin artifact has been added to Maven Central, which will happen when vert.x dependencies are there too,
-you will need to download the latest plugin jar and POM from the downloads page (https://github.com/rhart/vertx-maven-plugin/downloads) or build the jar from source.
+This plugin is now available on Maven Central.
+Group ID: org.anacoders.plugins
+Artifact ID: vertx-maven-plugin
+Current release version: 1.2.3.4
 
-Manually install the plugin jar to your Maven repository
-
-	mvn install:install-file -Dfile=vertx-maven-plugin-1.2.3.1-RELEASE.jar -DpomFile=vertx-maven-plugin-1.2.3.1-RELEASE.pom -DgroupId=org.vertx -DartifactId=vertx-maven-plugin -Dversion=1.2.3.1-RELEASE -Dpackaging=maven-plugin
 
 Versions
 --------
 
 This plugin's versions are aligned with vert.x versions with the minor version number to indicate increments of the plugin.
-e.g. vert.x 1.2.3.FINAL would be 1.2.3.x-RELEASE
+e.g. vert.x 1.2.3.FINAL would be 1.2.3.x
 
 Usage
 -----
@@ -34,9 +33,9 @@ vert.x. This means that you do not need to explicitly execute a "mvn package" fi
 For Java verticles, the plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
-		<groupId>org.vertx</groupId>
+		<groupId>org.anacoders.plugins</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-RELEASE</version>
+		<version>1.2.3.4</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
@@ -45,9 +44,9 @@ For Java verticles, the plugin will need to be configured in your project's POM 
 For Groovy verticles, the plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
-		<groupId>org.vertx</groupId>
+		<groupId>org.anacoders.plugins</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-RELEASE</version>
+		<version>1.2.3.4</version>
 		<configuration>
 			<verticleName>com/acme/MyVerticle.groovy</verticleName>
 		</configuration>
@@ -56,9 +55,9 @@ For Groovy verticles, the plugin will need to be configured in your project's PO
 For Javascript verticles, the plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
-		<groupId>org.vertx</groupId>
+		<groupId>org.anacoders.plugins</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-RELEASE</version>
+		<version>1.2.3.4</version>
 		<configuration>
 			<verticleName>src/main/javascript/com/acme/MyVerticle.js</verticleName>
 		</configuration>
@@ -67,9 +66,9 @@ For Javascript verticles, the plugin will need to be configured in your project'
 For modules, the plugin will need to be configured in your project's POM as follows:
 
 	<plugin>
-		<groupId>org.vertx</groupId>
+		<groupId>org.anacoders.plugins</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-RELEASE</version>
+		<version>1.2.3.4</version>
 		<configuration>
 			<moduleName>some-module-name</moduleName>
 			<moduleRepoUrl>http://some.module.repo.url</moduleRepoUrl>
@@ -82,9 +81,9 @@ Sometimes you want automatic execution of the plugin, for example when doing int
 To do this you can run the plugin in Maven execution scenarios and use the daemon=true configuration option to prevent vert.x from running indefinitely.
 
 	<plugin>
-		<groupId>org.vertx</groupId>
+		<groupId>org.anacoders.plugins</groupId>
 		<artifactId>vertx-maven-plugin</artifactId>
-		<version>1.2.3.1-RELEASE</version>
+		<version>1.2.3.4</version>
 		<configuration>
 			<verticleName>com.acme.MyVerticle</verticleName>
 		</configuration>
