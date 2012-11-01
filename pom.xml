@@ -10,7 +10,7 @@
 	<groupId>org.anacoders.plugins</groupId>
 	<artifactId>vertx-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.2.3.5-SNAPSHOT</version>
+	<version>1.3.0.0-SNAPSHOT</version>
 
 	<name>vertx-maven-plugin</name>
 	<url>https://github.com/rhart/vertx-maven-plugin</url>
@@ -37,9 +37,9 @@
 
 	<properties>
 		<maven.version>2.2.1</maven.version>
-		<vertx.version>1.2.3.final</vertx.version>
-		<rhino.version>1.7R3</rhino.version>
-		<groovy.version>1.8.6</groovy.version>
+		<vertx.version>1.3.0.final</vertx.version>
+		<rhino.version>1.7R4</rhino.version>
+		<groovy.version>2.0.0</groovy.version>
 	</properties>
 
 	<build>
