@@ -41,7 +41,7 @@ public class VertxServer {
             try {
                 managerThread.join();
             } catch (InterruptedException e) {
-                System.err.println("Unexpected thread interupt while waiting for vertx manager thread:");
+                System.err.println("Unexpected thread interrupt while waiting for vertx manager thread:");
                 e.printStackTrace();
             }
         }
