@@ -16,7 +16,7 @@ package org.vertx.maven.plugin;
  * limitations under the License.
  */
 
-import org.vertx.java.deploy.impl.cli.Starter;
+import org.vertx.java.platform.impl.cli.Starter;
 
 import java.util.List;
 
